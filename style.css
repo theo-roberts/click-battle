@@ -1,0 +1,45 @@
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#psuedo{
+    height: 250px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.fightarena{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+}
+
+#playercharacter{
+    max-height: 50%;
+    width: auto;
+}
+
+button{
+    height: 30px;
+}
+
+.playerattack{
+    transform: translate(50px);
+}
+
+.computerattack{
+    transform: translate(-50px);
+}
+
+#playerhealth{
+    font-size: 50px;
+}
+
+#computerhealth{
+    font-size: 50px;
+}
