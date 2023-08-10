@@ -1,7 +1,7 @@
 let playerHealth = 50, computerHealth = 50, playerDamage = 0, computerDamage = 0; computerHealthPercentage = 100; playerHealthPercentage = 100;
 let critHitNumber = 0;
 const sword = [2, 3, 4, 5, 6, 7, 8]
-const spear = [0, 0, 0, 1, 3, 5]
+const spear = [0, 0, 1, 3, 5]
 const mace = [0,0,0,1,2,3]
 
 function getRandomNumber(min, max) {
