@@ -1,17 +1,47 @@
 let playerHealth = 50, computerHealth = 60, playerDamage = 0, computerDamage = 0; computerHealthPercentage = 100; playerHealthPercentage = 100;
 let critHitNumber = 0;
+const sword = [2, 3, 4, 5, 6, 7, 8]
+const spear = [0, 0, 0, 1, 3, 5]
+const mace = [0,0,0,1,2,3]
 
 function getRandomNumber(min, max) {
     return Math.floor(Math.random()*(max - min + 1) + min);
 }
 
-document.querySelector("script").addEventListener('load', function(){
+function getWeaponDamage(arr){
+    const weapon = Math.floor(Math.random() * arr.length);
+    const damage = arr[weapon];
+    return damage;
+}
 
-});
+document.getElementById('sword').addEventListener('click', function(){
+    playerWeaponChoice = sword
+    document.getElementById('fightbtn').disabled = false;
+    document.getElementById('sword').disabled = true;
+    document.getElementById('spear').disabled = true;
+    document.getElementById('mace').disabled = true;
+})
+
+document.getElementById('spear').addEventListener('click', function(){
+    playerWeaponChoice = spear
+    document.getElementById('fightbtn').disabled = false;
+    document.getElementById('sword').disabled = true;
+    document.getElementById('spear').disabled = true;
+    document.getElementById('mace').disabled = true;
+})
+
+document.getElementById('mace').addEventListener('click', function(){
+    playerWeaponChoice = mace
+    document.getElementById('fightbtn').disabled = false;
+    document.getElementById('sword').disabled = true;
+    document.getElementById('spear').disabled = true;
+    document.getElementById('mace').disabled = true;
+})
 
 document.getElementById('fightbtn').addEventListener('click', function(){
     document.getElementById('fightbtn').disabled = true;
-    playerDamage = getRandomNumber(0,10);
+    hittype.textContent = null
+    playerDamage = getWeaponDamage(playerWeaponChoice)
     computerDamage = getRandomNumber(0, 10);
     critHitNumber = getRandomNumber(1,10)
     isCritHit()
@@ -36,7 +66,7 @@ document.getElementById('fightbtn').addEventListener('click', function(){
         document.getElementById('fightbtn').disabled = false;
     }, 1200);
     
-    console.log()
+    console.log(critHitNumber)
 });
 
 function updateComputerHealth(){
@@ -62,17 +92,21 @@ function isCritHit(){
     if(playerDamage == 0){
     null
     }
-    else if(critHitNumber == 5){
+    else if(playerWeaponChoice == spear && critHitNumber <= 3 || 
+        playerWeaponChoice == sword && critHitNumber == 5
+        || playerWeaponChoice == mace && critHitNumber <=5){
         playerDamage = playerDamage + 10
     }
-    else(null)
+    else (null)
 }
 
 function playerHit(){
+    hit.classList.remove('crithit');
     if(playerDamage > 10){
         const hit = document.querySelector('#hit');
         const hittype = document.querySelector('#hittype');
         hit.textContent = playerDamage;
+        hit.classList.add('crithit');
         hittype.textContent = 'CRIT'
     }
     else if(playerDamage == 0){
@@ -85,6 +119,21 @@ function playerHit(){
 }
 
 function computerHit(){
-    const hit = document.querySelector('#hit');
-    hit.textContent = (computerDamage)
+    hit.classList.remove('crithit');
+    if(computerDamage == 0){
+        const hit = document.querySelector('#hit');
+        const hittype = document.querySelector('#hittype');
+        hit.textContent = computerDamage;
+        hittype.textContent = 'MISS';
+    }
+    else
+        hit.textContent = computerDamage;
+ 
 }
+
+
+
+
+document.querySelector("script").addEventListener('load', function(){
+
+});

@@ -4,7 +4,7 @@ body {
     font-family: 'Courier New', Courier, monospace;
 }
 
-#top{
+#health{
     height: 250px;
     display: flex;
     align-items: flex-end;
@@ -69,5 +69,10 @@ button{
 }
 
 #hittype{
-    
+    font-size: 20px;
+}
+
+.crithit{
+    transform: scale(1.5);
+    color: greenyellow;
 }
