@@ -58,7 +58,7 @@ document.getElementById('fightbtn').addEventListener('click', function(){
     playerHit();
     setTimeout(()=>{
         document.querySelector('#playerweapon').classList.remove('playerattack')
-    }, 100);
+    }, 150);
     playerHealth = playerHealth - computerDamage;
     computerHealth = computerHealth - playerDamage;
     playerHealthPercentage = (playerHealth / 50) * 100
@@ -70,7 +70,7 @@ document.getElementById('fightbtn').addEventListener('click', function(){
         computerHit();
         setTimeout(()=>{
             document.querySelector('#computerweapon').classList.remove('computerattack')
-        }, 100);
+        }, 150);
         updatePlayerHealth()
         document.getElementById('fightbtn').disabled = false;
     }, 1200);
