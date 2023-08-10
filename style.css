@@ -7,6 +7,14 @@ body {
 #weaponchoice{
     margin: auto;
     text-align: center;
+    height: 800px;
+}
+
+#fightarena{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 800px;
 }
 
 #health{
@@ -26,7 +34,7 @@ p{
     gap: 50px;
 }
 
-.fightarena{
+.characters{
     display: flex;
     justify-content: center;
     max-height: 220px;
@@ -61,7 +69,7 @@ p{
     font-family: 'Courier New', Courier, monospace;
     height: 80px;
     width: 180px;
-    margin: auto;
+    margin-top: 40px;
     border: 2px solid black;
     background-color: transparent;
     color: black;

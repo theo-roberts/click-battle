@@ -16,6 +16,8 @@ function getWeaponDamage(arr){
 
 document.getElementById('sword').addEventListener('click', function(){
     playerWeaponChoice = sword
+    var elmntToView = document.getElementById("fightarena");
+    elmntToView.scrollIntoView({ behavior: "smooth"}); 
     playerweapon.src = "../click-battle/images/sword.png"
     document.getElementById('fightbtn').disabled = false;
     document.getElementById('sword').disabled = true;
@@ -25,6 +27,8 @@ document.getElementById('sword').addEventListener('click', function(){
 
 document.getElementById('spear').addEventListener('click', function(){
     playerWeaponChoice = spear
+    var elmntToView = document.getElementById("fightarena");
+    elmntToView.scrollIntoView({ behavior: "smooth"});
     playerweapon.src = "../click-battle/images/spear.png"
     document.getElementById('fightbtn').disabled = false;
     document.getElementById('sword').disabled = true;
@@ -34,6 +38,8 @@ document.getElementById('spear').addEventListener('click', function(){
 
 document.getElementById('mace').addEventListener('click', function(){
     playerWeaponChoice = mace
+    var elmntToView = document.getElementById("fightarena");
+    elmntToView.scrollIntoView({ behavior: "smooth"});
     playerweapon.src = "../click-battle/images/mace.png"
     document.getElementById('fightbtn').disabled = false;
     document.getElementById('sword').disabled = true;
