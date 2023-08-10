@@ -7,7 +7,7 @@ body {
 #weaponchoice{
     margin: auto;
     text-align: center;
-    height: 500px;
+    height: 1000px;
 }
 
 #fightarena{
@@ -121,4 +121,24 @@ button:active{
 .crithit{
     transform: scale(1.5);
     color: greenyellow;
+}
+
+.popup{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(255, 255, 255);
+}
+
+.popup-content{
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
 }

@@ -1,8 +1,8 @@
 let playerHealth = 50, computerHealth = 50, playerDamage = 0, computerDamage = 0; computerHealthPercentage = 100; playerHealthPercentage = 100;
 let critHitNumber = 0;
 const sword = [2, 3, 4, 5, 6, 7, 8]
-const spear = [0, 0, 1, 3, 5]
-const mace = [0,0,0,1,2,3]
+const spear = [0, 0, 3, 5, 7]
+const mace = [0,0,0,7,7,10]
 
 function getRandomNumber(min, max) {
     return Math.floor(Math.random()*(max - min + 1) + min);
@@ -49,6 +49,7 @@ document.getElementById('mace').addEventListener('click', function(){
 
 document.getElementById('fightbtn').addEventListener('click', function(){
     document.getElementById('fightbtn').disabled = true;
+    crithitindicator = 0
     hittype.textContent = null
     playerDamage = getWeaponDamage(playerWeaponChoice)
     computerDamage = getRandomNumber(0, 10);
@@ -61,22 +62,42 @@ document.getElementById('fightbtn').addEventListener('click', function(){
     }, 150);
     playerHealth = playerHealth - computerDamage;
     computerHealth = computerHealth - playerDamage;
-    playerHealthPercentage = (playerHealth / 50) * 100
-    computerHealthPercentage = (computerHealth / 50) * 100
+    updateComputerHealthPercentage()
+    updatePlayerHealthPercentage()
     updateComputerHealth();
     setTimeout(()=>{
-        hittype.textContent = null
-        document.querySelector('#computerweapon').classList.add('computerattack');
-        computerHit();
-        setTimeout(()=>{
-            document.querySelector('#computerweapon').classList.remove('computerattack')
-        }, 150);
-        updatePlayerHealth()
-        document.getElementById('fightbtn').disabled = false;
+    hittype.textContent = null
+    document.querySelector('#computerweapon').classList.add('computerattack');
+    computerHit();
+    setTimeout(()=>{
+        document.querySelector('#computerweapon').classList.remove('computerattack')
+    }, 150);
+    updatePlayerHealth()
+    document.getElementById('fightbtn').disabled = false;
     }, 1200);
-    
-    console.log(critHitNumber)
+    console.log(playerHealthPercentage)
+    checkWinner();
 });
+
+function updateComputerHealthPercentage(){
+    if (computerHealth <= 0){
+        computerHealthPercentage = 0
+    }
+    else {
+        computerHealthPercentage = (computerHealth / 50) * 100
+    }
+}
+
+function updatePlayerHealthPercentage(){
+    if (playerHealth <= 0){
+        playerHealthPercentage = 0
+    }
+    else {
+        playerHealthPercentage = (playerHealth / 50) * 100
+    }
+}
+
+
 
 function updateComputerHealth(){
     const computerhealth = document.getElementById('computerhealth')
@@ -88,15 +109,7 @@ function updatePlayerHealth(){
     playerhealth.style.width = playerHealthPercentage + '%'
 }
 
-function checkWinner(){
-    if(playerHealth <= 0){
-        alert('you lose')
-    }
-    else if (computerHealth <= 0){
-        alert ('you win')
-    }
-}
-
+let crithitindicator = 0
 function isCritHit(){
     if(playerDamage == 0){
     null
@@ -104,14 +117,15 @@ function isCritHit(){
     else if(playerWeaponChoice == spear && critHitNumber <= 3 || 
         playerWeaponChoice == sword && critHitNumber == 5
         || playerWeaponChoice == mace && critHitNumber <=5){
-        playerDamage = playerDamage + 10
+        playerDamage = playerDamage * 2
+        crithitindicator = 1
     }
     else (null)
 }
 
 function playerHit(){
     hit.classList.remove('crithit');
-    if(playerDamage > 10){
+    if(crithitindicator == 1){
         const hit = document.querySelector('#hit');
         const hittype = document.querySelector('#hittype');
         hit.textContent = playerDamage;
@@ -140,9 +154,27 @@ function computerHit(){
  
 }
 
+let modal = document.getElementById("winnerpopup");
+let winnertext = document.getElementById('winnertext')
+let replaybtn = document.getElementById('replaybtn')
 
+function checkWinner(){
+    if(playerHealth <= 0){
+        setTimeout(()=>{
+            modal.style.display = "block";
+            winnertext.textContent = 'YOU LOSE' 
+        }, 2000);
+    }
+    else if (computerHealth <= 0){
+        setTimeout(()=>{
+        modal.style.display = "block";
+        winnertext.textContent = 'YOU WIN';
+        }, 750);
+    }
+}
 
-
-document.querySelector("script").addEventListener('load', function(){
-
-});
+replaybtn.onclick = function() {
+    location.reload()
+    let startAgain = document.getElementById("weaponchoice");
+    startAgain.scrollIntoView();
+}
