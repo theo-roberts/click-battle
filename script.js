@@ -26,8 +26,8 @@ document.getElementById('fightbtn').addEventListener('click', function(){
     computerHealthPercentage = (computerHealth / 60) * 100
     updateComputerHealth();
     setTimeout(()=>{
+        hittype.textContent = null
         document.querySelector('#computerweapon').classList.add('computerattack');
-        const playerhealth = document.getElementById('playerhealth');
         computerHit();
         setTimeout(()=>{
             document.querySelector('#computerweapon').classList.remove('computerattack')
@@ -36,7 +36,7 @@ document.getElementById('fightbtn').addEventListener('click', function(){
         document.getElementById('fightbtn').disabled = false;
     }, 1200);
     
-    console.log(playerHealthPercentage)
+    console.log()
 });
 
 function updateComputerHealth(){
@@ -69,8 +69,19 @@ function isCritHit(){
 }
 
 function playerHit(){
-    const hit = document.querySelector('#hit');
-    hit.textContent = (playerDamage)
+    if(playerDamage > 10){
+        const hit = document.querySelector('#hit');
+        const hittype = document.querySelector('#hittype');
+        hit.textContent = playerDamage;
+        hittype.textContent = 'CRIT'
+    }
+    else if(playerDamage == 0){
+        const hit = document.querySelector('#hit');
+        hit.textContent = playerDamage;
+        hittype.textContent = 'MISS'
+    }
+    else
+        hit.textContent = playerDamage;
 }
 
 function computerHit(){

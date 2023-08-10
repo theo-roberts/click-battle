@@ -62,8 +62,12 @@ button{
     height: 20px;
 }
 
-
-#hit{
+#container{
     font-size: 40px;
     position: absolute;
+    text-align: center;
+}
+
+#hittype{
+    
 }
