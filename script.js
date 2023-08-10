@@ -1,39 +1,52 @@
-let playerHealth = 50, computerHealth = 50, playerDamage = 0, computerDamage = 0
+let playerHealth = 50, computerHealth = 60, playerDamage = 0, computerDamage = 0; computerHealthPercentage = 100; playerHealthPercentage = 100;
+let critHitNumber = 0;
 
 function getRandomNumber(min, max) {
     return Math.floor(Math.random()*(max - min + 1) + min);
 }
 
 document.querySelector("script").addEventListener('load', function(){
-    const playerhealth = document.getElementById('playerhealth')
-    const computerhealth = document.getElementById('computerhealth')
-    playerhealth.textContent = (playerHealth)
-    computerhealth.textContent = (computerHealth)
+
 });
 
-document.getElementById("fightbtn").addEventListener('click', function(){
-    playerDamage = getRandomNumber(1,10);
-    computerDamage = getRandomNumber(1, 10);
-    document.querySelector('#playercharacter').classList.add('playerattack');
+document.getElementById('fightbtn').addEventListener('click', function(){
+    document.getElementById('fightbtn').disabled = true;
+    playerDamage = getRandomNumber(0,10);
+    computerDamage = getRandomNumber(0, 10);
+    critHitNumber = getRandomNumber(1,10)
+    isCritHit()
+    document.querySelector('#playerweapon').classList.add('playerattack');
+    playerHit();
     setTimeout(()=>{
-        document.querySelector('#playercharacter').classList.remove('playerattack')
+        document.querySelector('#playerweapon').classList.remove('playerattack')
     }, 100);
     playerHealth = playerHealth - computerDamage;
     computerHealth = computerHealth - playerDamage;
+    playerHealthPercentage = (playerHealth / 50) * 100
+    computerHealthPercentage = (computerHealth / 60) * 100
     updateComputerHealth();
     setTimeout(()=>{
-        document.querySelector('#computercharacter').classList.add('computerattack');
+        document.querySelector('#computerweapon').classList.add('computerattack');
         const playerhealth = document.getElementById('playerhealth');
-        playerhealth.textContent = (playerHealth);
+        computerHit();
         setTimeout(()=>{
-            document.querySelector('#computercharacter').classList.remove('computerattack')
+            document.querySelector('#computerweapon').classList.remove('computerattack')
         }, 100);
+        updatePlayerHealth()
+        document.getElementById('fightbtn').disabled = false;
     }, 1200);
+    
+    console.log(playerHealthPercentage)
 });
 
 function updateComputerHealth(){
     const computerhealth = document.getElementById('computerhealth')
-    computerhealth.textContent = (computerHealth)
+    computerhealth.style.width = computerHealthPercentage + '%'
+}
+
+function updatePlayerHealth(){
+    const playerhealth = document.getElementById('playerhealth')
+    playerhealth.style.width = playerHealthPercentage + '%'
 }
 
 function checkWinner(){
@@ -45,6 +58,22 @@ function checkWinner(){
     }
 }
 
+function isCritHit(){
+    if(playerDamage == 0){
+    null
+    }
+    else if(critHitNumber == 5){
+        playerDamage = playerDamage + 10
+    }
+    else(null)
+}
 
+function playerHit(){
+    const hit = document.querySelector('#hit');
+    hit.textContent = (playerDamage)
+}
 
-
+function computerHit(){
+    const hit = document.querySelector('#hit');
+    hit.textContent = (computerDamage)
+}

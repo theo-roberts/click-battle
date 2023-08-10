@@ -6,18 +6,24 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <div id="psuedo"></div>
-    <div class="fightarena">
-        <div class="container">
-            <img id="playercharacter" src="../click-battle/images/green square.jpeg"></img>
+    <div id="top">
+        <div id="progressbar">
             <div id="playerhealth"></div>
         </div>
-        <button id="fightbtn">FIGHT</button>
-        <div class="container">
-            <img id="computercharacter" src="../click-battle/images/green square.jpeg">comp</img>
+        <div id="hit"></div> 
+        <div id="progressbar">
             <div id="computerhealth"></div>
+        </div>     
+    </div>
+    <div class="fightarena">
+        <img id="playercharacter" src="../click-battle/images/green square.jpeg"></img>
+        <div id="weapons">
+            <img id="playerweapon" src="../click-battle/images/green square.jpeg"></img>
+            <img id="computerweapon" src="../click-battle/images/green square.jpeg"></img>
         </div>
-    </div>  
+        <img id="computercharacter" src="../click-battle/images/green square.jpeg"></img>
+    </div> 
+    <button id="fightbtn">FIGHT</button>
 </body>
 <script src="script.js"></script>
 </html>
