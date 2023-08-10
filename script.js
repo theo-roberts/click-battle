@@ -1,4 +1,4 @@
-let playerHealth = 50, computerHealth = 60, playerDamage = 0, computerDamage = 0; computerHealthPercentage = 100; playerHealthPercentage = 100;
+let playerHealth = 50, computerHealth = 50, playerDamage = 0, computerDamage = 0; computerHealthPercentage = 100; playerHealthPercentage = 100;
 let critHitNumber = 0;
 const sword = [2, 3, 4, 5, 6, 7, 8]
 const spear = [0, 0, 0, 1, 3, 5]
@@ -16,6 +16,7 @@ function getWeaponDamage(arr){
 
 document.getElementById('sword').addEventListener('click', function(){
     playerWeaponChoice = sword
+    playerweapon.src = "../click-battle/images/sword.png"
     document.getElementById('fightbtn').disabled = false;
     document.getElementById('sword').disabled = true;
     document.getElementById('spear').disabled = true;
@@ -24,6 +25,7 @@ document.getElementById('sword').addEventListener('click', function(){
 
 document.getElementById('spear').addEventListener('click', function(){
     playerWeaponChoice = spear
+    playerweapon.src = "../click-battle/images/spear.png"
     document.getElementById('fightbtn').disabled = false;
     document.getElementById('sword').disabled = true;
     document.getElementById('spear').disabled = true;
@@ -32,6 +34,7 @@ document.getElementById('spear').addEventListener('click', function(){
 
 document.getElementById('mace').addEventListener('click', function(){
     playerWeaponChoice = mace
+    playerweapon.src = "../click-battle/images/mace.png"
     document.getElementById('fightbtn').disabled = false;
     document.getElementById('sword').disabled = true;
     document.getElementById('spear').disabled = true;
@@ -53,7 +56,7 @@ document.getElementById('fightbtn').addEventListener('click', function(){
     playerHealth = playerHealth - computerDamage;
     computerHealth = computerHealth - playerDamage;
     playerHealthPercentage = (playerHealth / 50) * 100
-    computerHealthPercentage = (computerHealth / 60) * 100
+    computerHealthPercentage = (computerHealth / 50) * 100
     updateComputerHealth();
     setTimeout(()=>{
         hittype.textContent = null
