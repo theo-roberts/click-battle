@@ -178,30 +178,19 @@ button:active{
     transform: translate(0, -380%);
     background-color: rgb(62, 123, 244);
     color: white;
-    border-radius: 50px;
-    width: 60px;
+    border-radius: 70px;
 }
 
 .crithit{
     transform: translate(0, -380%);
     background-color: rgb(165, 255, 29);
     color: black;
-    border-radius: 50px;
-    width: 60px;
+    border-radius: 70px;
 }
 
 .basichit{
     transform: translate(0, -380%);
     background-color: rgb(182, 62, 11);
     color: white;
-    border-radius: 50px;
-    width: 60px;
-}
-
-#playerhit{
-    margin-right: 100px;
-}
-
-#computerhit{
-    margin-right: -100px;
+    border-radius: 70px;
 }
