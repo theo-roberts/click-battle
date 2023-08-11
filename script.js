@@ -52,7 +52,6 @@ document.getElementById('fightbtn').addEventListener('click', function(){
     crithitindicator = 0
     hittype.textContent = null
     playerDamage = getWeaponDamage(playerWeaponChoice)
-    computerDamage = getRandomNumber(0, 10);
     critHitNumber = getRandomNumber(1,10)
     isCritHit()
     document.querySelector('#playerweapon').classList.add('playerattack');
@@ -60,11 +59,10 @@ document.getElementById('fightbtn').addEventListener('click', function(){
     setTimeout(()=>{
         document.querySelector('#playerweapon').classList.remove('playerattack')
     }, 150);
-    playerHealth = playerHealth - computerDamage;
     computerHealth = computerHealth - playerDamage;
     updateComputerHealthPercentage()
-    updatePlayerHealthPercentage()
     updateComputerHealth();
+    checkWinner()
     setTimeout(()=>{
     hittype.textContent = null
     document.querySelector('#computerweapon').classList.add('computerattack');
@@ -75,8 +73,12 @@ document.getElementById('fightbtn').addEventListener('click', function(){
     updatePlayerHealth()
     document.getElementById('fightbtn').disabled = false;
     }, 1200);
-    console.log(playerHealthPercentage)
+    computerDamage = getRandomNumber(0, 10);
+    playerHealth = playerHealth - computerDamage;
+    updatePlayerHealthPercentage()
     checkWinner();
+
+    console.log(playerHealthPercentage)
 });
 
 function updateComputerHealthPercentage(){
