@@ -197,3 +197,11 @@ button:active{
     border-radius: 50px;
     width: 60px;
 }
+
+#playerhit{
+    margin-right: 100px;
+}
+
+#computerhit{
+    margin-right: -100px;
+}
