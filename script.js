@@ -130,33 +130,47 @@ function isCritHit(){
 
 function playerHit(){
     playerhit.classList.remove('crithit');
+    playerhit.classList.remove('basichit');
+    playerhit.classList.remove('misshit');
+    computerhit.classList.remove('hit');
+    computerhit.classList.remove('misshit');
     computerhit.textContent = null;
     if(crithitindicator == 1){
         playerhit.textContent = playerDamage;
         playerhit.classList.add('crithit');
     }
     else if(playerDamage == 0){
-        playerhit.textContent = 'MISS'
-    }
-    else
         playerhit.textContent = playerDamage;
+        playerhit.classList.add('misshit');
+    }
+    else {
+        playerhit.textContent = playerDamage;
+        playerhit.classList.add('basichit');
+    }
 }
 
 
 function computerHit(){
     playerhit.classList.remove('crithit');
+    playerhit.classList.remove('basichit');
+    playerhit.classList.remove('misshit');
+    computerhit.classList.remove('hit');
+    computerhit.classList.remove('misshit');
     playerhit.textContent = null;
     if(computerDamage == 0){
-        computerhit.textContent = 'MISS'
-    }
-    else
         computerhit.textContent = computerDamage;
- 
+        computerhit.classList.add('misshit');
+    }
+    else {
+        computerhit.textContent = computerDamage;
+        computerhit.classList.add('basichit');
+    }
 }
 
 let modal = document.getElementById("winnerpopup");
 let winnertext = document.getElementById('winnertext')
 let replaybtn = document.getElementById('replaybtn')
+let restartbtn = document.getElementById('restartbtn')
 
 function checkWinner(){
     if(playerHealth <= 0){
@@ -176,6 +190,12 @@ function checkWinner(){
 }
 
 replaybtn.onclick = function() {
+    location.reload()
+    let startAgain = document.getElementById("weaponchoice");
+    startAgain.scrollIntoView();
+}
+
+restartbtn.onclick = function() {
     location.reload()
     let startAgain = document.getElementById("weaponchoice");
     startAgain.scrollIntoView();
