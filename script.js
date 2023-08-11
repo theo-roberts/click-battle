@@ -1,4 +1,4 @@
-let playerHealth = 50, computerHealth = 50, playerDamage = 0, computerDamage = 0; computerHealthPercentage = 100; playerHealthPercentage = 100;
+let playerHealth = 45, computerHealth = 55, playerDamage = 0, computerDamage = 0; computerHealthPercentage = 100; playerHealthPercentage = 100;
 let critHitNumber = 0;
 let playerWeaponChoice = null
 const sword = [2, 3, 4, 5, 6, 7, 8]
@@ -93,7 +93,7 @@ document.getElementById('fightbtn').addEventListener('click', function(){
     playerHealth = playerHealth - computerDamage;
     updatePlayerHealthPercentage()
     checkWinner();
-    console.log(critHitNumber)
+    console.log(computerhit.classList)
 });
 
 function updateComputerHealthPercentage(){
@@ -101,7 +101,7 @@ function updateComputerHealthPercentage(){
         computerHealthPercentage = 0
     }
     else {
-        computerHealthPercentage = (computerHealth / 50) * 100
+        computerHealthPercentage = (computerHealth / 55) * 100
     }
 }
 
@@ -110,7 +110,7 @@ function updatePlayerHealthPercentage(){
         playerHealthPercentage = 0
     }
     else {
-        playerHealthPercentage = (playerHealth / 50) * 100
+        playerHealthPercentage = (playerHealth / 45) * 100
     }
 }
 
@@ -147,7 +147,7 @@ function playerHit(){
     playerhit.classList.remove('crithit');
     playerhit.classList.remove('basichit');
     playerhit.classList.remove('misshit');
-    computerhit.classList.remove('hit');
+    computerhit.classList.remove('basichit');
     computerhit.classList.remove('misshit');
     computerhit.textContent = null;
     if(crithitindicator == 1){
@@ -169,7 +169,7 @@ function computerHit(){
     playerhit.classList.remove('crithit');
     playerhit.classList.remove('basichit');
     playerhit.classList.remove('misshit');
-    computerhit.classList.remove('hit');
+    computerhit.classList.remove('basichit');
     computerhit.classList.remove('misshit');
     playerhit.textContent = null;
     if(computerDamage == 0){
@@ -264,5 +264,11 @@ window.addEventListener("load", function() {
     }
     else if (computerWeaponChoice == spear){
         computerweapon.src = "../click-battle/images/spear.png"
+    }
+    else if (computerWeaponChoice == spoon){
+        computerweapon.src = "../click-battle/images/spoon.jpeg"
+    }
+    else if (computerWeaponChoice == dagger){
+        computerweapon.src = "../click-battle/images/dagger.png"
     }
 });
