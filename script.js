@@ -129,25 +129,28 @@ function isCritHit(){
 }
 
 function playerHit(){
-    hit.classList.remove('crithit');
+    playerhit.classList.remove('crithit');
+    computerhit.textContent = null;
     if(crithitindicator == 1){
-        hit.textContent = playerDamage;
-        hit.classList.add('crithit');
+        playerhit.textContent = playerDamage;
+        playerhit.classList.add('crithit');
     }
     else if(playerDamage == 0){
-        hit.textContent = 'MISS'
+        playerhit.textContent = 'MISS'
     }
     else
-        hit.textContent = playerDamage;
+        playerhit.textContent = playerDamage;
 }
 
+
 function computerHit(){
-    hit.classList.remove('crithit');
+    playerhit.classList.remove('crithit');
+    playerhit.textContent = null;
     if(computerDamage == 0){
-        hit.textContent = 'MISS'
+        computerhit.textContent = 'MISS'
     }
     else
-        hit.textContent = computerDamage;
+        computerhit.textContent = computerDamage;
  
 }
 

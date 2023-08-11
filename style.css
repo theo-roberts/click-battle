@@ -39,7 +39,7 @@ p{
     display: flex;
     justify-content: center;
     max-height: 220px;
-    
+    position: relative;
 }
 
 .weaponplc{
@@ -49,7 +49,9 @@ p{
 }
 
 #playercharacter{
-    max-height: 200px;
+    max-height: 200px;         
+    top: 0;
+    left: 0;
 }
 #computercharacter{
     max-height: 200px;
@@ -125,8 +127,8 @@ button:active{
 }
 
 #container{
+    gap: 40px;
     font-size: 40px;
-    position: absolute;
     text-align: center;
 }
 
@@ -153,4 +155,12 @@ button:active{
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+}
+
+#playerhit{
+    transform: translate(-25%, -380%);
+}
+
+#computerhit{
+    transform: translate(25%, -380%);
 }
