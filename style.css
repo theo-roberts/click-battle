@@ -5,9 +5,17 @@ body {
 }
 
 #weaponchoice{
+    display: flex;
+    flex-direction: column;
     margin: auto;
     text-align: center;
     height: 1000px;
+}
+
+#weaponstats{
+    margin-top: 40px;
+    max-height: 200px;
+    object-fit: contain;
 }
 
 #fightarena{

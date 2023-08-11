@@ -178,3 +178,26 @@ replaybtn.onclick = function() {
     let startAgain = document.getElementById("weaponchoice");
     startAgain.scrollIntoView();
 }
+
+// hover over weapon buttons //
+//sword//
+document.getElementById('sword').addEventListener('mouseenter', function(){
+    weaponstats.src = "../click-battle/images/sword.png"
+})
+document.getElementById('sword').addEventListener('mouseleave', function(){
+   weaponstats.src = null
+})
+//spear//
+document.getElementById('spear').addEventListener('mouseenter', function(){
+    weaponstats.src = "../click-battle/images/spear.png"
+})
+document.getElementById('spear').addEventListener('mouseleave', function(){
+   weaponstats.src = null
+})
+//mace//
+document.getElementById('mace').addEventListener('mouseenter', function(){
+    weaponstats.src = "../click-battle/images/mace.png"
+})
+document.getElementById('mace').addEventListener('mouseleave', function(){
+   weaponstats.src = null
+})
