@@ -97,7 +97,7 @@ p{
     height: 80px;
     width: 180px;
     border: 2px solid black;
-    background-color: transparent;
+    background-color: rgb(246, 231, 22);
     color: black;
     box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
 }
@@ -112,8 +112,15 @@ button{
     font-size: 30px;
     height: 80px;
     width: 180px;
-    border: 2px solid black;
-    background-color: transparent;
+    border: 4px solid black;
+    background-color: rgb(159, 212, 155);
+    color: black;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+}
+
+button:hover{
+    border: 4px solid black;
+    background-color: rgb(112, 155, 108);
     color: black;
     box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
 }

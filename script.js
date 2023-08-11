@@ -1,9 +1,12 @@
 let playerHealth = 50, computerHealth = 50, playerDamage = 0, computerDamage = 0; computerHealthPercentage = 100; playerHealthPercentage = 100;
 let critHitNumber = 0;
+let playerWeaponChoice = null
 const sword = [2, 3, 4, 5, 6, 7, 8]
-const spear = [0, 0, 3, 5, 7]
-const mace = [0,0,0,7,7,10]
-const weaponChoice = [sword, spear, mace]
+const spear = [0,0,3,5]
+const mace = [0,0,0,5,5,5]
+const spoon = [1,1,2,2,3,3]
+const dagger = [3,3,4,4,5,5]
+const weaponChoice = [sword, spear, mace, spoon, dagger]
 
 function getRandomNumber(min, max) {
     return Math.floor(Math.random()*(max - min + 1) + min);
@@ -22,44 +25,52 @@ function getWeaponDamage(arr){
 }
 
 document.getElementById('sword').addEventListener('click', function(){
-    playerWeaponChoice = sword
+    playerWeaponChoice = sword;
     var elmntToView = document.getElementById("fightarena");
     elmntToView.scrollIntoView({ behavior: "smooth"}); 
     playerweapon.src = "../click-battle/images/sword.png"
     document.getElementById('fightbtn').disabled = false;
-    document.getElementById('sword').disabled = true;
-    document.getElementById('spear').disabled = true;
-    document.getElementById('mace').disabled = true;
 })
 
 document.getElementById('spear').addEventListener('click', function(){
-    playerWeaponChoice = spear
+    playerWeaponChoice = spear;
     var elmntToView = document.getElementById("fightarena");
     elmntToView.scrollIntoView({ behavior: "smooth"});
     playerweapon.src = "../click-battle/images/spear.png"
     document.getElementById('fightbtn').disabled = false;
-    document.getElementById('sword').disabled = true;
-    document.getElementById('spear').disabled = true;
-    document.getElementById('mace').disabled = true;
 })
 
 document.getElementById('mace').addEventListener('click', function(){
-    playerWeaponChoice = mace
+    playerWeaponChoice = mace;
     var elmntToView = document.getElementById("fightarena");
     elmntToView.scrollIntoView({ behavior: "smooth"});
     playerweapon.src = "../click-battle/images/mace.png"
     document.getElementById('fightbtn').disabled = false;
-    document.getElementById('sword').disabled = true;
-    document.getElementById('spear').disabled = true;
-    document.getElementById('mace').disabled = true;
 })
+
+document.getElementById('spoon').addEventListener('click', function(){
+    playerWeaponChoice = spoon;
+    var elmntToView = document.getElementById("fightarena");
+    elmntToView.scrollIntoView({ behavior: "smooth"});
+    playerweapon.src = "../click-battle/images/spoon.jpeg"
+    document.getElementById('fightbtn').disabled = false;
+})
+
+document.getElementById('dagger').addEventListener('click', function(){
+    playerWeaponChoice = dagger;
+    var elmntToView = document.getElementById("fightarena");
+    elmntToView.scrollIntoView({ behavior: "smooth"});
+    playerweapon.src = "../click-battle/images/dagger.png"
+    document.getElementById('fightbtn').disabled = false;
+})
+
 
 document.getElementById('fightbtn').addEventListener('click', function(){
     document.getElementById('fightbtn').disabled = true;
     crithitindicator = 0
-    playerDamage = getWeaponDamage(playerWeaponChoice)
-    critHitNumber = getRandomNumber(1,10)
-    isCritHit()
+    critHitNumber = getRandomNumber(1,20);
+    playerDamage = getWeaponDamage(playerWeaponChoice);
+    isCritHit();
     document.querySelector('#playerweapon').classList.add('playerattack');
     playerHit();
     setTimeout(()=>{
@@ -82,6 +93,7 @@ document.getElementById('fightbtn').addEventListener('click', function(){
     playerHealth = playerHealth - computerDamage;
     updatePlayerHealthPercentage()
     checkWinner();
+    console.log(critHitNumber)
 });
 
 function updateComputerHealthPercentage(){
@@ -115,13 +127,16 @@ function updatePlayerHealth(){
 }
 
 let crithitindicator = 0
+
 function isCritHit(){
     if(playerDamage == 0){
     null
     }
-    else if(playerWeaponChoice == spear && critHitNumber <= 3 || 
-        playerWeaponChoice == sword && critHitNumber == 5
-        || playerWeaponChoice == mace && critHitNumber <=5){
+    else if(playerWeaponChoice == spear && critHitNumber <=4 || 
+        playerWeaponChoice == sword && critHitNumber <=5 || 
+        playerWeaponChoice == mace && critHitNumber <=10 ||
+        playerWeaponChoice == spoon && critHitNumber <= (1 || 2) ||
+        playerWeaponChoice == dagger && critHitNumber <=6){
         playerDamage = playerDamage * 2
         crithitindicator = 1
     }
@@ -223,7 +238,20 @@ document.getElementById('mace').addEventListener('mouseenter', function(){
 document.getElementById('mace').addEventListener('mouseleave', function(){
    weaponstats.src = null
 })
-
+//spoon//
+document.getElementById('spoon').addEventListener('mouseenter', function(){
+    weaponstats.src = "../click-battle/images/spoon.jpeg"
+})
+document.getElementById('spoon').addEventListener('mouseleave', function(){
+   weaponstats.src = null
+})
+//dagger//
+document.getElementById('dagger').addEventListener('mouseenter', function(){
+    weaponstats.src = "../click-battle/images/dagger.png"
+})
+document.getElementById('dagger').addEventListener('mouseleave', function(){
+   weaponstats.src = null
+})
 
 
 window.addEventListener("load", function() {
