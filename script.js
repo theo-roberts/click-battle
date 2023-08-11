@@ -3,9 +3,16 @@ let critHitNumber = 0;
 const sword = [2, 3, 4, 5, 6, 7, 8]
 const spear = [0, 0, 3, 5, 7]
 const mace = [0,0,0,7,7,10]
+const weaponChoice = [sword, spear, mace]
 
 function getRandomNumber(min, max) {
     return Math.floor(Math.random()*(max - min + 1) + min);
+}
+
+function getComputerWeapon(arr){
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    const choice = arr[randomIndex];
+    return choice;
 }
 
 function getWeaponDamage(arr){
@@ -50,7 +57,6 @@ document.getElementById('mace').addEventListener('click', function(){
 document.getElementById('fightbtn').addEventListener('click', function(){
     document.getElementById('fightbtn').disabled = true;
     crithitindicator = 0
-    hittype.textContent = null
     playerDamage = getWeaponDamage(playerWeaponChoice)
     critHitNumber = getRandomNumber(1,10)
     isCritHit()
@@ -64,21 +70,18 @@ document.getElementById('fightbtn').addEventListener('click', function(){
     updateComputerHealth();
     checkWinner()
     setTimeout(()=>{
-    hittype.textContent = null
-    document.querySelector('#computerweapon').classList.add('computerattack');
-    computerHit();
-    setTimeout(()=>{
+        document.querySelector('#computerweapon').classList.add('computerattack');
+        computerHit();
+        setTimeout(()=>{
         document.querySelector('#computerweapon').classList.remove('computerattack')
-    }, 150);
-    updatePlayerHealth()
-    document.getElementById('fightbtn').disabled = false;
+        }, 150);
+        updatePlayerHealth()
+        document.getElementById('fightbtn').disabled = false;
     }, 1200);
-    computerDamage = getRandomNumber(0, 10);
+    computerDamage = getWeaponDamage(computerWeaponChoice)
     playerHealth = playerHealth - computerDamage;
     updatePlayerHealthPercentage()
     checkWinner();
-
-    console.log(playerHealthPercentage)
 });
 
 function updateComputerHealthPercentage(){
@@ -128,16 +131,11 @@ function isCritHit(){
 function playerHit(){
     hit.classList.remove('crithit');
     if(crithitindicator == 1){
-        const hit = document.querySelector('#hit');
-        const hittype = document.querySelector('#hittype');
         hit.textContent = playerDamage;
         hit.classList.add('crithit');
-        hittype.textContent = 'CRIT'
     }
     else if(playerDamage == 0){
-        const hit = document.querySelector('#hit');
-        hit.textContent = playerDamage;
-        hittype.textContent = 'MISS'
+        hit.textContent = 'MISS'
     }
     else
         hit.textContent = playerDamage;
@@ -146,10 +144,7 @@ function playerHit(){
 function computerHit(){
     hit.classList.remove('crithit');
     if(computerDamage == 0){
-        const hit = document.querySelector('#hit');
-        const hittype = document.querySelector('#hittype');
-        hit.textContent = computerDamage;
-        hittype.textContent = 'MISS';
+        hit.textContent = 'MISS'
     }
     else
         hit.textContent = computerDamage;
@@ -164,13 +159,15 @@ function checkWinner(){
     if(playerHealth <= 0){
         setTimeout(()=>{
             modal.style.display = "block";
-            winnertext.textContent = 'YOU LOSE' 
+            winnertext.textContent = 'YOU LOSE'
+            return;
         }, 2000);
     }
     else if (computerHealth <= 0){
         setTimeout(()=>{
         modal.style.display = "block";
         winnertext.textContent = 'YOU WIN';
+        return;
         }, 750);
     }
 }
@@ -203,3 +200,18 @@ document.getElementById('mace').addEventListener('mouseenter', function(){
 document.getElementById('mace').addEventListener('mouseleave', function(){
    weaponstats.src = null
 })
+
+
+
+window.addEventListener("load", function() {
+    computerWeaponChoice = getComputerWeapon(weaponChoice);
+    if (computerWeaponChoice == mace){
+        computerweapon.src = "../click-battle/images/mace.png"
+    }
+    else if (computerWeaponChoice == sword){
+        computerweapon.src = "../click-battle/images/sword.png"
+    }
+    else if (computerWeaponChoice == spear){
+        computerweapon.src = "../click-battle/images/spear.png"
+    }
+});

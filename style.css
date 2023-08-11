@@ -21,13 +21,14 @@ body {
 #fightarena{
     height: 500px;
     position: relative;
+    gap: 50px;
 }
 
 #health{
     margin-top: 100px;
     display: flex;
     justify-content: center;
-    gap: 350px;
+    gap: 200px;
 }
 
 p{
@@ -38,7 +39,13 @@ p{
     display: flex;
     justify-content: center;
     max-height: 220px;
-    gap: 100px;
+    
+}
+
+.weaponplc{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
 }
 
 #playercharacter{
@@ -104,7 +111,7 @@ button:active{
 #progressbar{
     background-color: black;
     padding: 3px;
-    width: 170px;
+    width: 200px;
 }
 
 #computerhealth{
@@ -121,10 +128,6 @@ button:active{
     font-size: 40px;
     position: absolute;
     text-align: center;
-}
-
-#hittype{
-    font-size: 20px;
 }
 
 .crithit{
