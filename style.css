@@ -1,9 +1,17 @@
 body {
     display: flex;
     flex-direction: column;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'VT323'
 }
 
+html{
+    background-color: rgb(178, 225, 255);
+}
+
+#weapons{
+    display: flex;
+    gap: 20px;
+}
 
 #weaponchoice{
     display: flex;
@@ -15,7 +23,7 @@ body {
 
 #weaponstats{
     margin-top: 40px;
-    max-height: 200px;
+    max-height: 300px;
     object-fit: contain;
 }
 
@@ -93,7 +101,7 @@ p{
 }
 
 #fightbtn{
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'VT323';
     height: 80px;
     width: 180px;
     border: 4px solid black;
@@ -108,7 +116,7 @@ p{
 }
 
 button{
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'VT323';
     font-size: 30px;
     height: 80px;
     width: 180px;
@@ -178,19 +186,22 @@ button:active{
     transform: translate(0, -380%);
     background-color: rgb(62, 123, 244);
     color: white;
-    border-radius: 70px;
+    border-radius: 50px;
+    width: 60px;
 }
 
 .crithit{
     transform: translate(0, -380%);
     background-color: rgb(165, 255, 29);
     color: black;
-    border-radius: 70px;
+    border-radius: 50px;
+    width: 60px;
 }
 
 .basichit{
     transform: translate(0, -380%);
     background-color: rgb(182, 62, 11);
     color: white;
-    border-radius: 70px;
+    border-radius: 50px;
+    width: 60px;
 }

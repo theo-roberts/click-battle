@@ -1,8 +1,8 @@
 let playerHealth = 45, computerHealth = 55, playerDamage = 0, computerDamage = 0; computerHealthPercentage = 100; playerHealthPercentage = 100;
 let critHitNumber = 0;
 let playerWeaponChoice = null
-const sword = [2, 3, 4, 5, 6, 7, 8]
-const spear = [0,0,3,5]
+const sword = [0,0, 1,2, 3, 4, 5, 6, 7, 8]
+const spear = [0,0,3,3,4,4]
 const mace = [0,0,0,5,5,5]
 const spoon = [1,1,2,2,3,3]
 const dagger = [3,3,4,4,5,5]
@@ -52,7 +52,7 @@ document.getElementById('spoon').addEventListener('click', function(){
     playerWeaponChoice = spoon;
     var elmntToView = document.getElementById("fightarena");
     elmntToView.scrollIntoView({ behavior: "smooth"});
-    playerweapon.src = "../click-battle/images/spoon.jpeg"
+    playerweapon.src = "../click-battle/images/spoon.png"
     document.getElementById('fightbtn').disabled = false;
 })
 
@@ -68,7 +68,7 @@ document.getElementById('dagger').addEventListener('click', function(){
 document.getElementById('fightbtn').addEventListener('click', function(){
     document.getElementById('fightbtn').disabled = true;
     crithitindicator = 0
-    critHitNumber = getRandomNumber(1,20);
+    critHitNumber = getRandomNumber(1,30);
     playerDamage = getWeaponDamage(playerWeaponChoice);
     isCritHit();
     document.querySelector('#playerweapon').classList.add('playerattack');
@@ -132,10 +132,10 @@ function isCritHit(){
     if(playerDamage == 0){
     null
     }
-    else if(playerWeaponChoice == spear && critHitNumber <=4 || 
-        playerWeaponChoice == sword && critHitNumber <=5 || 
-        playerWeaponChoice == mace && critHitNumber <=10 ||
-        playerWeaponChoice == spoon && critHitNumber <= (1 || 2) ||
+    else if(playerWeaponChoice == spear && critHitNumber <=6 || 
+        playerWeaponChoice == sword && critHitNumber <=8 || 
+        playerWeaponChoice == mace && critHitNumber <=15 ||
+        playerWeaponChoice == spoon && critHitNumber <= (1 || 2 || 3) ||
         playerWeaponChoice == dagger && critHitNumber <=6){
         playerDamage = playerDamage * 2
         crithitindicator = 1
@@ -219,38 +219,38 @@ restartbtn.onclick = function() {
 // hover over weapon buttons //
 //sword//
 document.getElementById('sword').addEventListener('mouseenter', function(){
-    weaponstats.src = "../click-battle/images/sword.png"
+    weaponstats.src = "../click-battle/images/sword-stats.png"
 })
 document.getElementById('sword').addEventListener('mouseleave', function(){
-   weaponstats.src = null
+   weaponstats.src = "../click-battle/images/noweapon.png"
 })
 //spear//
 document.getElementById('spear').addEventListener('mouseenter', function(){
-    weaponstats.src = "../click-battle/images/spear.png"
+    weaponstats.src = "../click-battle/images/spear-stats.png"
 })
 document.getElementById('spear').addEventListener('mouseleave', function(){
-   weaponstats.src = null
+   weaponstats.src = "../click-battle/images/noweapon.png"
 })
 //mace//
 document.getElementById('mace').addEventListener('mouseenter', function(){
-    weaponstats.src = "../click-battle/images/mace.png"
+    weaponstats.src = "../click-battle/images/mace-stats.png"
 })
 document.getElementById('mace').addEventListener('mouseleave', function(){
-   weaponstats.src = null
+   weaponstats.src = "../click-battle/images/noweapon.png"
 })
 //spoon//
 document.getElementById('spoon').addEventListener('mouseenter', function(){
-    weaponstats.src = "../click-battle/images/spoon.jpeg"
+    weaponstats.src = "../click-battle/images/spoon-stats.png"
 })
 document.getElementById('spoon').addEventListener('mouseleave', function(){
-   weaponstats.src = null
+   weaponstats.src = "../click-battle/images/noweapon.png"
 })
 //dagger//
 document.getElementById('dagger').addEventListener('mouseenter', function(){
-    weaponstats.src = "../click-battle/images/dagger.png"
+    weaponstats.src = "../click-battle/images/dagger-stats.png"
 })
 document.getElementById('dagger').addEventListener('mouseleave', function(){
-   weaponstats.src = null
+   weaponstats.src = "../click-battle/images/noweapon.png"
 })
 
 
@@ -266,7 +266,7 @@ window.addEventListener("load", function() {
         computerweapon.src = "../click-battle/images/spear.png"
     }
     else if (computerWeaponChoice == spoon){
-        computerweapon.src = "../click-battle/images/spoon.jpeg"
+        computerweapon.src = "../click-battle/images/spoon.png"
     }
     else if (computerWeaponChoice == dagger){
         computerweapon.src = "../click-battle/images/dagger.png"
