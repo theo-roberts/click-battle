@@ -101,7 +101,7 @@ function updateComputerHealthPercentage(){
         computerHealthPercentage = 0
     }
     else {
-        computerHealthPercentage = (computerHealth / 45) * 100
+        computerHealthPercentage = (computerHealth / 28) * 100
     }
 }
 
@@ -110,7 +110,7 @@ function updatePlayerHealthPercentage(){
         playerHealthPercentage = 0
     }
     else {
-        playerHealthPercentage = (playerHealth / 35) * 100
+        playerHealthPercentage = (playerHealth / 24) * 100
     }
 }
 
