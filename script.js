@@ -1,4 +1,4 @@
-let playerHealth = 45, computerHealth = 55, playerDamage = 0, computerDamage = 0; computerHealthPercentage = 100; playerHealthPercentage = 100;
+let playerHealth = 24, computerHealth = 28, playerDamage = 0, computerDamage = 0; computerHealthPercentage = 100; playerHealthPercentage = 100;
 let critHitNumber = 0;
 let playerWeaponChoice = null
 const sword = [0,0, 1,2, 3, 4, 5, 6, 7, 8]
@@ -101,7 +101,7 @@ function updateComputerHealthPercentage(){
         computerHealthPercentage = 0
     }
     else {
-        computerHealthPercentage = (computerHealth / 55) * 100
+        computerHealthPercentage = (computerHealth / 45) * 100
     }
 }
 
@@ -110,7 +110,7 @@ function updatePlayerHealthPercentage(){
         playerHealthPercentage = 0
     }
     else {
-        playerHealthPercentage = (playerHealth / 45) * 100
+        playerHealthPercentage = (playerHealth / 35) * 100
     }
 }
 
