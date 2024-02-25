@@ -88,7 +88,7 @@ document.getElementById('fightbtn').addEventListener('click', function(){
         }, 150);
         updatePlayerHealth()
         document.getElementById('fightbtn').disabled = false;
-    }, 1200);
+    }, 800);
     computerDamage = getWeaponDamage(computerWeaponChoice)
     playerHealth = playerHealth - computerDamage;
     updatePlayerHealthPercentage()
